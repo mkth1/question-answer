@@ -65,10 +65,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
-			'password' => '',
+			'host'     => 'ec2-54-217-238-179.eu-west-1.compute.amazonaws.com',
+			'database' => 'd48rv6p5pjstd0',
+			'username' => 'tnlinxqljvsmky',
+			'password' => 'b_de5ykAB7SBWLz5I8NGGBxY7L',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
