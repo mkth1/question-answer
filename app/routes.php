@@ -11,7 +11,4 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home');
-});
+Route::get( '/',array('as'=>'home','uses'=>'QuestionsController@index') );
