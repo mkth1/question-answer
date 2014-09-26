@@ -56,8 +56,13 @@
 	            <div class="collapse navbar-collapse pull-right" id="collapse">
 	                <ul class="nav navbar-nav">
                                 <li>{{HTML::linkRoute('home', 'Home')}}</li>
-	                    <li class="active"><a href="#">Login</a></li>
-	                    <li>{{HTML::linkRoute('register', 'Register')}}</li>
+                                @if(!Auth::check())
+	                       <li>{{HTML::linkRoute('login', 'Login')}}</li>
+	                       <li>{{HTML::linkRoute('register', 'Register')}}</li>
+                                @else
+                                    <li>{{ HTML::linkRoute('logout','Logout('.Auth::user()->username.')') }}</li>
+                                @endif
+
 	                    <li><a href="#">Contact</a></li>
 	                </ul>
 	            </div>
@@ -66,7 +71,7 @@
 
 	<!-- Content -->
                 @if( Session::has('message') )
-                    <p>{{Session::get('message')}}</p>
+                    <p class="alert alert-danger">{{Session::get('message')}}</p>
                 @endif
 	   @yield('content')
 	<!-- ./ content -->
