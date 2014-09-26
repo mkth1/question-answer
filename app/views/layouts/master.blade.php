@@ -11,7 +11,7 @@
 
     <title>
         @section('title')
-            Laravel
+            Forum
         @show
     </title>
 
@@ -51,14 +51,13 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a href="" class="navbar-brand">My Website</a>
+	                <a href="" class="navbar-brand">Question & Answers</a>
 	            </div>
-	            <div class="collapse navbar-collapse" id="collapse">
+	            <div class="collapse navbar-collapse pull-right" id="collapse">
 	                <ul class="nav navbar-nav">
 	                    <li><a href="#">Home</a></li>
-	                    <li><a href="#">About</a></li>
-	                    <li class="active"><a href="#">Services</a></li>
-	                    <li><a href="#">Photo Gallery</a></li>
+	                    <li class="active"><a href="#">Login</a></li>
+	                    <li><a href="#">Register</a></li>
 	                    <li><a href="#">Contact</a></li>
 	                </ul>
 	            </div>
