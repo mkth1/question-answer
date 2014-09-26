@@ -12,3 +12,6 @@
 */
 
 Route::get( '/',array('as'=>'home','uses'=>'QuestionsController@index') );
+Route::get( 'register',array('as'=>'register','uses'=>'UsersController@register') );
+
+Route::post( 'register',array('before'=>'csrf','uses'=>'UsersController@create') );

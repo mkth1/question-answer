@@ -51,13 +51,13 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a href="" class="navbar-brand">Question & Answers</a>
+	                <a href="/" class="navbar-brand">Question & Answers</a>
 	            </div>
 	            <div class="collapse navbar-collapse pull-right" id="collapse">
 	                <ul class="nav navbar-nav">
-	                    <li><a href="#">Home</a></li>
+                                <li>{{HTML::linkRoute('home', 'Home')}}</li>
 	                    <li class="active"><a href="#">Login</a></li>
-	                    <li><a href="#">Register</a></li>
+	                    <li>{{HTML::linkRoute('register', 'Register')}}</li>
 	                    <li><a href="#">Contact</a></li>
 	                </ul>
 	            </div>
@@ -65,12 +65,15 @@
 	    </div>
 
 	<!-- Content -->
-		@yield('content')
+                @if( Session::has('message') )
+                    <p>{{Session::get('message')}}</p>
+                @endif
+	   @yield('content')
 	<!-- ./ content -->
 
 	<!-- Footer -->
 	<footer class="clearfix">
-		@yield('footer')
+	   @yield('footer')
 	</footer>
 	<!-- ./ Footer -->
 

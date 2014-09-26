@@ -13,7 +13,9 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	//'debug' => false,
+	// make it false in production
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
