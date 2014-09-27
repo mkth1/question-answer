@@ -19,7 +19,9 @@ Route::get( 'logout',array('as'=>'logout','uses'=>'UsersController@logout') );
 
 Route::post( 'register',array('before'=>'csrf','uses'=>'UsersController@store') );
 Route::post( 'login',array('before'=>'csfr','uses'=>'UsersController@postLogin') );
-//Route::post( 'questions',array('before'=>'csfr','uses'=>'QuestionsController@store') );
+Route::post( 'questions',array('before'=>'csfr','uses'=>'QuestionsController@store') );
+Route::post('answer', array( 'before'=>'csfr','uses'=>'AnswersController@store' ) );
 
 
 Route::resource('questions', 'QuestionsController');
+Route::resource('answers', 'AnswersController');
