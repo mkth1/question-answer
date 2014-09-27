@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->string('question');
-			$table->boolean('solved');
+			$table->boolean('solved')->default(0);;
 			$table->timestamps();
 		});
 	}

@@ -19,6 +19,6 @@
 			{{ Form::password('password') }}
 		</p>
 
-		<p> {{ Form::submit('Login') }} </p>
+		<p> {{ Form::submit('Login',['class' => 'btn btn-primary']) }} </p>
 	{{ Form::close() }}
 @stop

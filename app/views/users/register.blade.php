@@ -33,6 +33,6 @@
 			{{ Form::password('password_confirmation') }}
 		</p>
 
-		<p> {{ Form::submit('Register') }}</p>
+		<p> {{ Form::submit('Register',['class' => 'btn btn-primary']) }}</p>
 	{{ Form::close() }}
 @stop

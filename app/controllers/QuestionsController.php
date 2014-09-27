@@ -2,6 +2,11 @@
 
 class QuestionsController extends \BaseController {
 
+	public function __construct() {
+		$this->beforeFilter('auth',array(
+			'only'=> array('store' )
+		));
+	}
 	public $restful = true;
 	/**
 	 * Display a listing of the resource.
@@ -12,7 +17,8 @@ class QuestionsController extends \BaseController {
 	public function index()
 	{
 		return View::make('questions.index')
-				->with('title','Make It Snappy Q&A - Home');
+				->with('title','Make It Snappy Q&A - Home')
+				->with('questions', Question::unsolved());
 	}
 
 	/**
@@ -34,7 +40,19 @@ class QuestionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$validation = Question::validate( Input::all() );
+
+		if ( $validation->passes() ) {
+			Question::create( array(
+				'question'=>Input::get('question'),
+				'user_id'=>Auth::user()->id
+			));
+
+			return Redirect::to('/')
+				->with('message','Your question has been posted');
+		} else {
+			return Redirect::to('/')->withErrors($validation)->withInput();
+		}
 	}
 
 	/**
@@ -46,7 +64,11 @@ class QuestionsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$question = Question::find($id);
+
+		return View::make('questions.show')
+			->with('title','Make It Snappy - View Question')
+			->with('question',$question);
 	}
 
 	/**
