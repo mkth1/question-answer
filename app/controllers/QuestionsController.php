@@ -4,7 +4,7 @@ class QuestionsController extends \BaseController {
 
 	public function __construct() {
 		$this->beforeFilter('auth',array(
-			'only'=> array('store' )
+			'only'=> array('store' , 'edit', 'update' ,'yourQuestions')
 		));
 	}
 	public $restful = true;
@@ -67,7 +67,7 @@ class QuestionsController extends \BaseController {
 		$question = Question::find($id);
 
 		return View::make('questions.show')
-			->with('title','Make It Snappy - View Question')
+			->with('title','View Question')
 			->with('question',$question);
 	}
 
@@ -78,21 +78,46 @@ class QuestionsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id = null)
 	{
-		//
+		if ( !$this->_question_belongs_to_user($id) ) {
+			return Redirect::to('your-questions')
+				->with('message','Invalid Question');
+		}
+		return View::make('questions.edit')
+			->with('title','Make It Snappy Q&A - Edit')
+			->with('question',Question::find($id) );
 	}
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /questions/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		//
+
+		if ( !$this->_question_belongs_to_user($id) ) {
+			return Redirect::to('your-questions')
+				->with('message','Invalid Question');
+		}
+
+		$validation = Question::validate(Input::all());
+		if ( $validation->passes() ) {
+			$question = Question::find($id);
+			$question->question = Input::get('question');
+			$question->solved = (Input::get('solved')? 1:0 );
+			$question->save();
+
+			return Redirect::to('questions/'.$id)
+				->with('message','Your question has been update');
+		} else {
+			return Redirect::to('questions/'.$id.'/edit')
+				->withErrors( $validation );
+
+		}
+
 	}
 
 	/**
@@ -105,6 +130,23 @@ class QuestionsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function yourQuestions() {
+		return View::make('questions.your-questions')
+			->with('title','Q&A - Your Question')
+			->with('username',Auth::user()->username)
+			->with('questions',Question::your_questions() );
+	}
+
+	private function _question_belongs_to_user($id) {
+		$question = Question::find($id);
+
+		if ( $question->user_id == Auth::user()->id ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

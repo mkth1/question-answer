@@ -60,6 +60,7 @@
 	                       <li>{{HTML::linkRoute('login', 'Login')}}</li>
 	                       <li>{{HTML::linkRoute('register', 'Register')}}</li>
                                 @else
+                                     <li>{{HTML::linkRoute('your-questions', 'Your Qs')}}</li>
                                     <li>{{ HTML::linkRoute('logout','Logout('.Auth::user()->username.')') }}</li>
                                 @endif
 
