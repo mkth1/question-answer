@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-	<h1>{{ ucfirst($question->user->username) }} asks:</h1>
+	<h1>{{ ucfirst($question->user->username) }} asked:</h1>
 	<p> {{$question->question}} </p>
 
 	<div id="answers">

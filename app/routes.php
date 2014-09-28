@@ -17,11 +17,13 @@ Route::get( 'login',array('as'=>'login','uses'=>'UsersController@login') );
 Route::get( 'logout',array('as'=>'logout','uses'=>'UsersController@logout') );
 //Route::get('question/{id}', array('as'=>'question','uses'=>'QuestionsController@show') );
 Route::get('your-questions', array('as'=>'your-questions','uses'=>'QuestionsController@yourQuestions') );
+Route::get('results/{any}', array('uses'=>'QuestionsController@results') );
 
 Route::post( 'register',array('before'=>'csrf','uses'=>'UsersController@store') );
 Route::post( 'login',array('before'=>'csfr','uses'=>'UsersController@postLogin') );
 Route::post( 'questions',array('before'=>'csfr','uses'=>'QuestionsController@store') );
 Route::post('answer', array( 'before'=>'csfr','uses'=>'AnswersController@store' ) );
+Route::post('search', array( 'before'=>'csfr','uses'=>'QuestionsController@search' ) );
 
 
 Route::resource('questions', 'QuestionsController');

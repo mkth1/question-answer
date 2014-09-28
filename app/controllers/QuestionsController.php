@@ -132,6 +132,23 @@ class QuestionsController extends \BaseController {
 		//
 	}
 
+	public function results($keyword) {
+		return View::make('questions.results')
+			->with('title','Q&A - Search Result')
+			->with('questions',Question::search($keyword) );
+	}
+
+	public function search() {
+		$keyword = Input::get('keyword');
+
+		if ( empty($keyword) ) {
+			return Redirect::to('/')
+				->with('message','No keywords entered, please tyr again');
+		}
+
+		return Redirect::to('results/'.$keyword);
+	}
+
 	public function yourQuestions() {
 		return View::make('questions.your-questions')
 			->with('title','Q&A - Your Question')
