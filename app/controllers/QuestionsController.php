@@ -22,17 +22,6 @@ class QuestionsController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 * GET /questions/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 * POST /questions
 	 *
@@ -118,18 +107,6 @@ class QuestionsController extends \BaseController {
 
 		}
 
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /questions/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 	public function results($keyword) {
