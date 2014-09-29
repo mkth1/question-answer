@@ -17,15 +17,15 @@ class Question extends Base {
 	}
 
 	public static function unsolved() {
-		return static::where('solved','=',0)->orderBy('id','DESC')->paginate(3);
+		return static::where('solved','=',0)->orderBy('id','DESC')->paginate(8);
 	}
 
 	public static function your_questions() {
-		return static::where('user_id','=',Auth::user()->id)->paginate(3);
+		return static::where('user_id','=',Auth::user()->id)->paginate(8);
 	}
 
 	public static function search( $keyword ) {
-		return static::where('question','LIKE','%'.$keyword.'%')->paginate(3);
+		return static::where('question','LIKE','%'.$keyword.'%')->paginate(8);
 	}
 
 
