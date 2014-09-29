@@ -19,8 +19,10 @@ A registered user is able to post and answer the question. A logged in user can 
 	* Post a new question.
 	* Edit a old question.
 	* Answer the question.
+	* Mark it as solved
 
 * As an unregistred user.
-	* Search a question
-	* View unanswered questions
+	* Search a question.
+	* View unanswered questions.
+	* View how many answers has been posted.
 
