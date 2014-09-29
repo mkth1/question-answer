@@ -6,7 +6,7 @@
 * php artisan serve.
 
 ### Demo
-[Demo Url](http://question-answers.herokuapp.com/)
+[Heroku Demo Url](http://question-answers.herokuapp.com/)
 
 ### Short description of the project
 This project was developed when i was trying to find a solution for my question but there was no avilable forum in the university to post my question. This is just a protoype which can be extended to real web service. This service has been done with **[laravel php framework](http://laravel.com/), [postgresql](http://www.postgresql.org/) and [bootstrap 3](http://getbootstrap.com/)**. The website has been hosted on [heroku](http://question-answers.herokuapp.com/) and code is maintained in github.
