@@ -26,7 +26,7 @@
                                     <li>{{ HTML::linkRoute('logout','Logout ('.Auth::user()->username.') ') }}</li>
                                 @endif
 
-                        <li><a href="#">Contact</a></li>
+                        <li>{{ HTML::linkRoute('contact','Contact') }}</li>
                     </ul>
                         {{ Form::open( array('url'=>'search','class'=>'navbar-form navbar-left','role'=>'search') ) }}
                         {{ Form::token() }}

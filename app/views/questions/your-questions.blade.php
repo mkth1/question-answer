@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<h1> {{ ucfirst($username) }} </h1>
-
+	<legend class="text-center">{{ ucfirst($username) }} asked:</legend>
 	@if ( !count($questions) )
 		<p>You have not posted any question yet.</p>
 	@else

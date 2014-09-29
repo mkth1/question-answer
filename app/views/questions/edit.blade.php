@@ -15,7 +15,6 @@
 		</ul>
 	@endif
 
-	<!--{{ Form::model($question, array('route'=> array('questions.update',$question->id) ) )}} !-->
 	{{ Form::open( array('url'=>'questions/'.$question->id,'method'=>'put') ) }}
 	{{ Form::token() }}
 		<p>

@@ -7,29 +7,35 @@
 
 @section('content')
 <div>
-	<h1>Ask a Question</h1>
+	<legend class="text-center">Ask a Question</legend>
 	@if (Auth::check())
 		@if( $errors->has() )
 			<ul class="alert alert-danger">
 				{{ $errors->first('question','<li>:message</li>')}}
 			</ul>
 		@endif
-
-		{{ Form::open( array('url'=>'questions') )}}
+		{{ Form::open( array('url'=>'questions','class' =>'form-horizontal') ) }}
 		{{ Form::token() }}
-			<p>
-				{{ Form::label('question','Question') }} <br />
-				{{ Form::text('question',Input::old('question')) }}
 
-				{{ Form::submit('Ask a Question', ['class' => 'btn btn-primary']) }}
-			</p>
+		<div class="form-group">
+			{{ Form::label('question','Question',['class'=>'col-md-2 control-label']) }}
+			<div class="col-md-8">
+				{{ Form::text('question',Input::old('question'),['class'=>'form-control'] ) }}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				{{ Form::submit('Submit',['class' => 'btn btn-primary']) }}
+			</div>
+		</div>
 		{{ Form::close() }}
 	@else
 		<p>Please login to ask or answer questions.</p>
 	@endif
 </div>
-<div id="questions">
-	<h2>Unsolved Questions</h2>
+<hr>
+<div id="questions" >
+	<legend class="text-center">Unsolved Questions</legend>
 	@if( !count($questions))
 		<p>No question have been asked.</p>
 	@else

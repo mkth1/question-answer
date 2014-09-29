@@ -70,4 +70,9 @@ class UsersController extends \BaseController {
 		}
 	}
 
+	public function contact()
+	{
+		return View::make('users.contact')->with('title','Q&A - Contact');
+	}
+
 }

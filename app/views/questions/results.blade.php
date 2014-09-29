@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-	<h1> Search Results</h1>
+	<legend class="text-center">Search Results:</legend>
 
 	@if ( !count($questions) )
 		<p>Nothing found,please try a different search.</p>
