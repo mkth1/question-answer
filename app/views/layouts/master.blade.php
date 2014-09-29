@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head id="Starter-Site">
-
-    <meta charset="UTF-8">
-
-    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <title>
-        @section('title')
-            Forum
-        @show
-    </title>
-
-    <!--  Mobile Viewport Fix -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-    <!-- favicon icon -->
-    <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
-
-    <!-- CSS -->
-    {{ HTML::style('css/bootstrap.css') }}
-    {{ HTML::style('css/styles.css') }}
-
-    @yield('styles')
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-</head>
-
+@include('layouts/header')
 <body>
     <!-- Container -->
     <div class="container">
@@ -75,28 +40,20 @@
         </div>
 
     <!-- Content -->
-                @if( Session::has('message') )
-                    <p class="alert alert-danger">{{Session::get('message')}}</p>
-                @endif
-       @yield('content')
+        @if( Session::has('message') )
+            <p class="alert alert-danger">{{Session::get('message')}}</p>
+        @endif
+        <div class="jumbotron">
+            @yield('content')
+       </div>
     <!-- ./ content -->
 
     <!-- Footer -->
     <footer class="clearfix">
-       @yield('footer')
+        @include('layouts/footer')
     </footer>
     <!-- ./ Footer -->
-
-
     <!-- ./ container -->
-
-    <!-- Javascripts -->
-    {{ HTML::script('js/jquery-2.1.1.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/application.js') }}
-
-    @yield('scripts')
-
 </body>
 
 </html>
